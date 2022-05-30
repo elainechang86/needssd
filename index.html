@@ -13,6 +13,14 @@
     <div class="Loading">
     </div>
     <h1 style="position: fixed; top: 35vh; color: white;">啊你是要跑多久？？</h1>
+    <h1 style="position: fixed; top: 28vh; color: white;">How long are u going to take？？</h1>
+
+    <div class="wrap">
+        <a class="button rollover" href="https://www.coolpc.com.tw/evaluate.php">
+            <span class="roll-text">原價屋點我</span>
+            <span class="roll-text">Let's Go</span>
+        </a>
+    </div>
 </body>
 
 <style>
@@ -56,6 +64,64 @@
         100% {
             transform: rotate(360deg);
         }
+    }
+    
+    body {
+        font-family: 'Roboto', sans-serif;
+    }
+    
+    .wrap {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        height: 100px;
+        width: 200px;
+        margin: auto;
+    }
+    
+    .button :hover {
+        background-color: transparent;
+    }
+    
+    .button {
+        background-color: transparent;
+        border: 2px solid #cd1e78;
+        border-radius: 4px;
+        display: inline-block;
+        color: #cd1e78;
+        cursor: pointer;
+        font-size: 20px;
+        font-weight: 600;
+        height: 45px;
+        line-height: 40px;
+        letter-spacing: 1px;
+        margin: 0;
+        overflow: hidden;
+        padding: 0 22px;
+        text-align: center;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: all .2s ease-in-out;
+        position: fixed;
+        top: 80vh;
+        left: 45vw;
+        width: 10vw;
+    }
+    
+    .roll-text {
+        display: block;
+        position: relative;
+        transition: all 420ms cubic-bezier(.175, .885, .32, 1.275);
+    }
+    
+    .roll-text:last-child {
+        color: #fff;
+    }
+    
+    .rollover:hover .roll-text:first-child {
+        margin-top: -38px;
     }
 </style>
 
