@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Pure Css Loading Very Simple</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <meta name='viewport' content="width=device-witdh, initial-scale=1.0">
+</head>
+
+<body>
+
+    <div class="Loading">
+    </div>
+    <h1 style="position: fixed; top: 35vh; color: white;">啊你是要跑多久？？</h1>
+</body>
+
+<style>
+    *,
+    html,
+    body {
+        padding: 0px;
+        margin: 0px;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+     ::selection {
+        background-color: #2d98da;
+        color: #fff;
+    }
+    
+    body {
+        background-color: #eabfc7;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        min-height: 100vh;
+    }
+    
+    .Loading {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        border: 10px solid rgba(255, 255, 255, .2);
+        border-top: 10px solid rgba(255, 255, 255, 1);
+        animation: Loading 1s linear infinite;
+        border-radius: 50%;
+    }
+    
+    @keyframes Loading {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+
+</html>
