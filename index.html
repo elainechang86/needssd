@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Pure Css Loading Very Simple</title>
+    <title>該買SSD了吧</title>
 
     <meta name='viewport' content="width=device-witdh, initial-scale=1.0">
 </head>
@@ -22,7 +22,98 @@
     </div>
 
     <h6 style="position: fixed; bottom: 5vh; color: white;">Created by elainechang86@gmail.com</h6>
+
+    <div class="marquee">
+        <p class="logo">打個LOL是要等你多久啦<br>買個SSD好不好嘛</p>
+    </div>
 </body>
+
+<script src="http://code.jquery.com/jquery-1.11.2.min.js" type="text/javascript"></script>
+<script>
+    (function ($, window, undefined) {
+        $.fn.marqueeify = function (options) {
+            var settings = $.extend({
+                horizontal: true,
+                vertical: true,
+                speed: 50, // In pixels per second
+                container: $(this).parent(),
+                bumpEdge: function () { }
+            }, options);
+
+            return this.each(function () {
+                var containerWidth, containerHeight, elWidth, elHeight, move, getSizes,
+                    $el = $(this);
+
+                getSizes = function () {
+                    containerWidth = settings.container.outerWidth();
+                    containerHeight = settings.container.outerHeight();
+                    elWidth = $el.outerWidth();
+                    elHeight = $el.outerHeight();
+                };
+
+                move = {
+                    right: function () {
+                        $el.animate({ left: (containerWidth - elWidth) }, {
+                            duration: ((containerWidth / settings.speed) * 1000), queue: false, easing: "linear", complete: function () {
+                                settings.bumpEdge();
+                                move.left();
+                            }
+                        });
+                    },
+                    left: function () {
+                        $el.animate({ left: 0 }, {
+                            duration: ((containerWidth / settings.speed) * 1000), queue: false, easing: "linear", complete: function () {
+                                settings.bumpEdge();
+                                move.right();
+                            }
+                        });
+                    },
+                    down: function () {
+                        $el.animate({ top: (containerHeight - elHeight) }, {
+                            duration: ((containerHeight / settings.speed) * 1000), queue: false, easing: "linear", complete: function () {
+                                settings.bumpEdge();
+                                move.up();
+                            }
+                        });
+                    },
+                    up: function () {
+                        $el.animate({ top: 0 }, {
+                            duration: ((containerHeight / settings.speed) * 1000), queue: false, easing: "linear", complete: function () {
+                                settings.bumpEdge();
+                                move.down();
+                            }
+                        });
+                    }
+                };
+
+                getSizes();
+
+                if (settings.horizontal) {
+                    move.right();
+                }
+                if (settings.vertical) {
+                    move.down();
+                }
+
+                // Make that shit responsive!
+                $(window).resize(function () {
+                    getSizes();
+                });
+            });
+        };
+    })(jQuery, window);
+
+    $(document).ready(function () {
+
+        $('.marquee').marqueeify({
+            speed: 200,
+            bumpEdge: function () {
+                var newColor = "hsl(" + Math.floor(Math.random() * 360) + ", 100%, 50%)";
+                $('.marquee .logo').css('color', newColor);
+            }
+        });
+    });
+</script>
 
 <style>
     *,
@@ -33,12 +124,12 @@
         box-sizing: border-box;
         font-family: 'Poppins', sans-serif;
     }
-    
-     ::selection {
+
+    ::selection {
         background-color: #2d98da;
         color: #fff;
     }
-    
+
     body {
         background-color: #eabfc7;
         display: flex;
@@ -47,7 +138,7 @@
         width: 100%;
         min-height: 100vh;
     }
-    
+
     .Loading {
         position: relative;
         width: 100px;
@@ -57,20 +148,37 @@
         animation: Loading 1s linear infinite;
         border-radius: 50%;
     }
-    
+
+    .marquee {
+        display: block;
+        left: 0;
+        position: absolute;
+        top: 0;
+    }
+
+    p {
+        display: block;
+        text-align: center;
+        font-size: 20px;
+        background-color: #8cc1e28e;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
     @keyframes Loading {
         0% {
             transform: rotate(0deg);
         }
+
         100% {
             transform: rotate(360deg);
         }
     }
-    
+
     body {
         font-family: 'Roboto', sans-serif;
     }
-    
+
     .wrap {
         position: absolute;
         top: 0;
@@ -81,11 +189,11 @@
         width: 200px;
         margin: auto;
     }
-    
+
     .button :hover {
         background-color: transparent;
     }
-    
+
     .button {
         background-color: transparent;
         border: 2px solid #cd1e78;
@@ -110,25 +218,26 @@
         left: 45vw;
         width: 10vw;
     }
-    
+
     .roll-text {
         display: block;
         position: relative;
         transition: all 420ms cubic-bezier(.175, .885, .32, 1.275);
     }
-    
+
     .roll-text:last-child {
         color: #fff;
     }
-    
+
     .rollover:hover .roll-text:first-child {
         margin-top: -38px;
     }
-    
+
     @media screen and (max-width: 900px) {
         h1 {
             font-size: 18px;
         }
+
         .button {
             width: 80vw;
             left: 10vw;
