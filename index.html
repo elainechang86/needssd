@@ -35,7 +35,7 @@
             var settings = $.extend({
                 horizontal: true,
                 vertical: true,
-                speed: 50, // In pixels per second
+                speed: 50,
                 container: $(this).parent(),
                 bumpEdge: function () { }
             }, options);
@@ -95,7 +95,6 @@
                     move.down();
                 }
 
-                // Make that shit responsive!
                 $(window).resize(function () {
                     getSizes();
                 });
@@ -114,6 +113,7 @@
         });
     });
 </script>
+<!-- code from https://codepen.io/stezu/pen/DyGWrV -->
 
 <style>
     *,
@@ -160,7 +160,7 @@
         display: block;
         text-align: center;
         font-size: 20px;
-        background-color: #8cc1e28e;
+        background-color: #eecf8bc5;
         padding: 20px;
         border-radius: 10px;
     }
